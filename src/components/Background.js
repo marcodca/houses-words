@@ -4,6 +4,7 @@ import styled from "styled-components"
 import blackPaper from "../images/black-paper.png"
 import buried from "../images/buried.png"
 import { animated, useTransition, config } from "react-spring"
+import Globe from './Globe';
 import PropTypes from 'prop-types';
 
 const StyledBackground = styled.div`
@@ -91,6 +92,8 @@ const Background = ({ children }) => {
     }
   )
 
+
+
   return (
     <StyledBackground>
       {innerBackgroundTransition.map(
@@ -102,6 +105,7 @@ const Background = ({ children }) => {
           )
       )}
       {children}
+      <Globe/>
     </StyledBackground>
   )
 }

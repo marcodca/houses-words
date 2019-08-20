@@ -12,10 +12,10 @@ import { animated, useSpring } from "react-spring"
 
 const BannersContainer = styled.div`
   display: flex;
-  /* margin-top: 36%; */
   justify-content: space-around;
   width: 45%;
   position: absolute;
+  z-index: 3;
   bottom: 0;
   left: 40%;
 `
