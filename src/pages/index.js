@@ -7,16 +7,24 @@ import styled from "styled-components"
 import ToggledContextProvider from "../contexts/ToggledContext"
 import MainTitle from "../components/MainTitle"
 import Banner from "../components/Banner"
-import Background from '../components/Background';
+import Background from "../components/Background"
+import { animated, useSpring } from "react-spring"
 
 const BannersContainer = styled.div`
   display: flex;
-  margin-top: 36%;
+  /* margin-top: 36%; */
   justify-content: space-around;
   width: 45%;
+  position: absolute;
+  bottom: 0;
+  left: 40%;
 `
 
 const IndexPage = () => {
+  const bannerAnimation = useSpring({
+    transform: "translate3d(0, 0, 0)",
+    from: { transform: "translate3d(0, -1000px, 0)" },
+  })
 
   return (
     <Layout>
@@ -25,11 +33,13 @@ const IndexPage = () => {
         <Background>
           <MainTitle />
           <BannersContainer>
-            <Banner house={"stark"} />
+            <animated.div style={bannerAnimation}>
+              <Banner house={"stark"} />
+            </animated.div>
             <Banner house={"targaryen"} />
             <Banner house={"lannister"} />
           </BannersContainer>
-          </Background>
+        </Background>
       </ToggledContextProvider>
     </Layout>
   )

@@ -12,6 +12,7 @@ import { animated, useSpring } from "react-spring"
 const HouseBanner = styled(animated.img)`
   width: 130px;
   height: ${props => (props.house === "stark" ? 170 : 140)}px;
+  cursor: pointer;
 `
 const Banner = ({ house }) => {
   const { setToggled, setNotToggled, bannerToggled } = useContext(
