@@ -41,7 +41,7 @@ const OutterGlobe = styled(animated.div)`
 const calc = x => x - window.innerWidth / 2
 const globeTrans = x => `translateX(${x / 2}px)`
 
-const Globe = () => {
+const Globe = ({ isAnimating }) => {
   const {
     bannerToggled: { isToggled, banner },
   } = useContext(ToggledContext)
@@ -78,10 +78,12 @@ const Globe = () => {
             }
           }
     }};
-    animation: ${keyframes`
+    animation: ${!isAnimating &&
+        keyframes`
     to {
     transform: translateX(-50%);
-  }`} 30s linear alternate infinite;
+  }`}
+      30s linear alternate infinite;
     background-size: cover;
     ${isToggled &&
       css`

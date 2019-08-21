@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { ToggledContext } from "../contexts/ToggledContext"
 import styled from "styled-components"
 import blackPaper from "../images/black-paper.png"
@@ -83,6 +83,7 @@ const HouseName = styled.h2`
 const Background = ({ children }) => {
   const { bannerToggled } = useContext(ToggledContext)
 
+  const [isAnimating, setIsAnimating] = useState(false)
   const innerBackgroundTransition = useTransition(
     bannerToggled.isToggled,
     null,
@@ -100,6 +101,11 @@ const Background = ({ children }) => {
         opacity: 0,
       },
       config: { ...config.slow },
+      //Work around ahead! There was an issue with the behaviour of the animation in the globe component (not managed with react spring, btw), so we are using an state to check if this animation is done, and if so procede with the one in the child component. I don't necesarry undestand much of this part of the API.
+      onFrame : (a, b ) => {
+        if (isAnimating !== true) setIsAnimating(true);
+        if (b === 'update') setIsAnimating(false);
+      }
     }
   )
 
@@ -120,7 +126,8 @@ const Background = ({ children }) => {
           )
       )}
       {children}
-      <Globe />
+      <Globe isAnimating={isAnimating}/>
+      
     </StyledBackground>
   )
 }

@@ -31,7 +31,7 @@ const Banner = ({ house }) => {
 
   const containerAnimation = useSpring({
     transform: "translateY(0)",
-    from: { transform: "translateY(-1000px)"} , delay: house === 'stark' ? 0 : house === 'targaryen' ? 150 : 300,
+    from: { transform: "translateY(-1000px)"} , delay: house === 'stark' ? 0 : house === 'targaryen' ? 150 : 300
   })
 
   const setBannerImg = () => {
