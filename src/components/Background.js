@@ -3,7 +3,7 @@ import { ToggledContext } from "../contexts/ToggledContext"
 import styled from "styled-components"
 import blackPaper from "../images/black-paper.png"
 import buried from "../images/buried.png"
-import { animated, useTransition, config } from "react-spring"
+import { animated, useTransition, config, useSpring } from "react-spring"
 import Globe from "./Globe"
 import PropTypes from "prop-types"
 
@@ -72,7 +72,7 @@ InnerBackground.propTypes = {
 
 const HouseName = styled.h2`
   font-size: 140px;
-  margin-left: 50%;
+  margin-left: 40%;
   margin-top: 3%;
   text-align: center;
   text-transform: uppercase;
@@ -102,10 +102,10 @@ const Background = ({ children }) => {
       },
       config: { ...config.slow },
       //Work around ahead! There was an issue with the behaviour of the animation in the globe component (not managed with react spring, btw), so we are using an state to check if this animation is done, and if so procede with the one in the child component. I don't necesarry undestand much of this part of the API.
-      onFrame : (a, b ) => {
-        if (isAnimating !== true) setIsAnimating(true);
-        if (b === 'update') setIsAnimating(false);
-      }
+      onFrame: (a, b) => {
+        if (isAnimating !== true) setIsAnimating(true)
+        if (b === "update") setIsAnimating(false)
+      },
     }
   )
 
@@ -126,8 +126,7 @@ const Background = ({ children }) => {
           )
       )}
       {children}
-      <Globe isAnimating={isAnimating}/>
-      
+      <Globe isAnimating={isAnimating} />
     </StyledBackground>
   )
 }
