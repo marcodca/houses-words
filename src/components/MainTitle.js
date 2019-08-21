@@ -30,7 +30,7 @@ const MainTitle = () => {
         >
           Houses
         </span>
-        <br /> <b>words</b>
+        <br /><b>words</b>
       </Title>
   )
 }

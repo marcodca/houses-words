@@ -93,8 +93,10 @@ const Globe = () => {
               ? '"dragonstone"'
               : '"casterly rock"'
           }};
+          font-family: papyrus;
           position: absolute;
-          text-transform: uppercase;
+          text-transform: capitalize;
+          font-weight: bolder;
           font-size: 48px;
           top: 70%;
           left: 30%;

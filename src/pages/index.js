@@ -20,12 +20,9 @@ const BannersContainer = styled.div`
   left: 40%;
 `
 
-const IndexPage = () => {
-  const bannerAnimation = useSpring({
-    transform: "translate3d(0, 0, 0)",
-    from: { transform: "translate3d(0, -1000px, 0)" },
-  })
 
+
+const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
@@ -33,9 +30,7 @@ const IndexPage = () => {
         <Background>
           <MainTitle />
           <BannersContainer>
-            <animated.div style={bannerAnimation}>
               <Banner house={"stark"} />
-            </animated.div>
             <Banner house={"targaryen"} />
             <Banner house={"lannister"} />
           </BannersContainer>
