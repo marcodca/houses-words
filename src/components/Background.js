@@ -100,7 +100,7 @@ const Background = ({ children }) => {
         ({ item, key, props }) =>
           item && (
             <InnerBackground style={props} house={bannerToggled.banner}>
-              <h3>Heyyy</h3>
+              <h2>house stark</h2>
             </InnerBackground>
           )
       )}
