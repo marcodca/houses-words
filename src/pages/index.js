@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 // import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -21,20 +21,28 @@ const BannersContainer = styled.div`
 `
 
 const IndexPage = () => {
+  const [loading, setLoading] = useState(true)
+  
+  setTimeout(() => {
+    setLoading(false)
+  }, 2000)
   return (
-    <Layout>
-      <SEO title="Home" />
-      <ToggledContextProvider>
-        <Background>
-          <MainTitle />
-          <BannersContainer>
-            <Banner house={"stark"} />
-            <Banner house={"targaryen"} />
-            <Banner house={"lannister"} />
-          </BannersContainer>
-        </Background>
-      </ToggledContextProvider>
-    </Layout>
+    !loading && (
+      <Layout>
+        <SEO title="Home" />
+        <ToggledContextProvider>
+          <Background>
+            <MainTitle />
+            <p>ehm</p>
+            <BannersContainer>
+              <Banner house={"stark"} />
+              <Banner house={"targaryen"} />
+              <Banner house={"lannister"} />
+            </BannersContainer>
+          </Background>
+        </ToggledContextProvider>
+      </Layout>
+    )
   )
 }
 
