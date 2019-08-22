@@ -25,7 +25,7 @@ const IndexPage = () => {
   
   setTimeout(() => {
     setLoading(false)
-  }, 1000)
+  }, 500)
   return (
     !loading && (
       <Layout>
@@ -33,7 +33,7 @@ const IndexPage = () => {
         <ToggledContextProvider>
           <Background>
             <MainTitle />
-            <p>1 sec</p>
+            <p>0.5 sec</p>
             <BannersContainer>
               <Banner house={"stark"} />
               <Banner house={"targaryen"} />
