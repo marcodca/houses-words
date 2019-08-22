@@ -25,7 +25,7 @@ const OutterGlobe = styled(animated.div)`
   border-radius: 50%;
   box-shadow: 0 0 20px 20px #000 inset, 0 0 20px 2px #000;
   z-index: 0;
-  cursor: none;
+  cursor: crosshair;
   &::after {
     position: absolute;
     content: "";
