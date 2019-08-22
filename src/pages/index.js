@@ -36,6 +36,7 @@ const IndexPage = () => {
     <div
       onLoad={
         ()=>{
+          console.log('loaded')
           setIsLoaded(true)
         }
       }
