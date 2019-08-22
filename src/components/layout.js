@@ -1,12 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { createGlobalStyle } from "styled-components"
 import MobileMessage from '../components/MobileMessage';
 import gameOfThrones from '../fonts/GameofThrones.ttf'
 import 'typeface-anton';
 
+const Layout = ({ children }) => {
+  
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  setTimeout(()=>{
+    setIsLoaded(true)
+  }, 2000)
 
-const GlobalStyle = createGlobalStyle`
+  const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -35,13 +42,13 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: anton , sans-serif;
+    display: ${ ()=> isLoaded ? 'block' : 'none'}
   }
   a {
     text-decoration: none;
   }
 `
 
-const Layout = ({ children }) => {
 
   return (
     <>

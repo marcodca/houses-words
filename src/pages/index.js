@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 // import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -20,26 +20,9 @@ const BannersContainer = styled.div`
   left: 40%;
 `
 
-const LoadingScreen = styled.div`
-  width: 100%;
-  height: 100%;
-  background: blue;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9;
-`
-
 const IndexPage = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  setTimeout(()=>{
-    setIsLoaded(true)
-  }, 2000)
-
   return (
     <Layout>
-      {!isLoaded && <LoadingScreen />}
       <SEO title="Home" />
       <ToggledContextProvider>
         <Background>
