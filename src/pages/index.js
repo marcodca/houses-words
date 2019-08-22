@@ -31,16 +31,13 @@ const LoadingScreen = styled.div`
 `
 
 const IndexPage = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  setTimeout(()=>{
+    setIsLoaded(true)
+  }, 2000)
+
   return (
-    <div
-      onLoad={
-        ()=>{
-          console.log('loaded')
-          setIsLoaded(true)
-        }
-      }
-    >
     <Layout>
       {!isLoaded && <LoadingScreen />}
       <SEO title="Home" />
@@ -55,7 +52,6 @@ const IndexPage = () => {
         </Background>
       </ToggledContextProvider>
     </Layout>
-    </div>
   )
 }
 
