@@ -52,7 +52,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-    <p>ahm</p>
       <GlobalStyle/>
       <MobileMessage/>
       <main>{children}</main>
