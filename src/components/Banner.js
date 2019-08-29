@@ -16,7 +16,7 @@ const HouseBanner = styled(animated.img)`
   height: ${props => (props.house === "stark" ? 170 : 140)}px;
   cursor: pointer;
 `
-const Banner = ({ house }) => {
+const Banner = ({ house, style }) => {
   const { setToggled, setNotToggled, bannerToggled } = useContext(
     ToggledContext
   )
@@ -46,9 +46,9 @@ const Banner = ({ house }) => {
         return ""
     }
   }
-
+//style={containerAnimation}
   return (
-    <Container style={containerAnimation}>
+    <Container style={style}>
       <HouseBanner
         style={bannerAnimation}
         src={setBannerImg()}

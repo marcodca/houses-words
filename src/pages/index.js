@@ -8,9 +8,10 @@ import ToggledContextProvider from "../contexts/ToggledContext"
 import MainTitle from "../components/MainTitle"
 import Banner from "../components/Banner"
 import Background from "../components/Background"
-import { animated, useSpring } from "react-spring"
+import Loading from '../components/Loading';
+import { animated, useSpring, useTrail } from "react-spring"
 
-const BannersContainer = styled.div`
+const StyledBannersContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 45%;
@@ -21,24 +22,34 @@ const BannersContainer = styled.div`
 `
 
 const IndexPage = () => {
+  //A small work around. When deployed, there was an awful first print, with some of the images being displayed on top of everything, by doing this, it seems to get solved.
   const [loading, setLoading] = useState(true)
-  
   setTimeout(() => {
     setLoading(false)
   }, 0)
+
+  const bannerTrail = useTrail(3, { transform : `translateY(0)`, from: { transform: `translateY(600px)` } })
+
+  const BannersContainer = () => (
+    <StyledBannersContainer>
+      {bannerTrail.map((animation, index) => (
+        <Banner
+          house={["stark", "targaryen", "lannister"][index]}
+          style={animation}
+        />
+      ))}
+    </StyledBannersContainer>
+  )
+
   return (
     !loading && (
       <Layout>
+        <Loading/>
         <SEO title="Home" />
         <ToggledContextProvider>
           <Background>
             <MainTitle />
-            <p>0 sec</p>
-            <BannersContainer>
-              <Banner house={"stark"} />
-              <Banner house={"targaryen"} />
-              <Banner house={"lannister"} />
-            </BannersContainer>
+            <BannersContainer />
           </Background>
         </ToggledContextProvider>
       </Layout>

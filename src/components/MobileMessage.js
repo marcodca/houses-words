@@ -12,6 +12,7 @@ const Message = styled.div`
   color: white;
   padding: 5%;
   text-align: center;
+  letter-spacing: 0.1rem;
   @media (min-width: 768px) {
     display: none;
   }
@@ -21,7 +22,7 @@ const MobileMessage = () => {
   return (
     <Message>
       <h1>
-        Apologies but this web is available in desktop only. The responsive
+        Apologies but this web is available in desktop only.<br/> The responsive
         design is dark and full of terrors.
       </h1>
     </Message>
