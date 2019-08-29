@@ -39,6 +39,9 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+  h1 {
+    margin: 0;
+  }
 `
 
 const Layout = ({ children }) => {
