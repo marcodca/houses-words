@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { animated, useTrail, useSpring } from "react-spring"
 import styled from "styled-components/macro"
 
@@ -44,16 +44,23 @@ const LoadingBarInner = styled(animated.div)`
   border-radius: inherit;
 `
 
-const loading = "loading".split("")
+const loading = "loading".split("");
+
+const Block = styled(animated.div)`
+  width: 200px;
+  height: 200px;
+  background: red;
+  margin: 10% auto;
+`
+
 
 const Loading = () => {
   const letterTrail = useTrail(loading.length, {
     to: { opacity: 1, transform: "translateY(0)" },
     from: { opacity: 0, transform: "translateY(50%)" },
   })
-
-  const loadingBarAnimation = useSpring({clipPath: `inset(0% 0% 0% 100%)`, from : {clipPath: `inset(0% 0% 0% 0%)`}, delay: 900})
-
+  
+  const { progress } = useSpring({progress: 1, from : { progress: 0}, delay: 1000});
   return (
     <Container>
       <LoadingText>
@@ -62,7 +69,11 @@ const Loading = () => {
         ))}
       </LoadingText>
       <LoadingBarOutter>
-        <LoadingBarInner style={loadingBarAnimation} />
+        <LoadingBarInner style={{
+          clipPath: progress.interpolate({range : [0, 0.25, 0.66, 0.85, 1], output : [0, 30, 80, 85, 100]}
+            )
+            .interpolate(progress => `inset(0% 0% 0% ${progress}%`)
+        }} />
       </LoadingBarOutter>
     </Container>
   )
