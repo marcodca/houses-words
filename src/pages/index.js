@@ -11,7 +11,6 @@ import Background from "../components/Background"
 import Loading from "../components/Loading"
 import { animated, useTrail, useTransition } from "react-spring"
 
-
 const StyledBannersContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -23,7 +22,15 @@ const StyledBannersContainer = styled.div`
 `
 
 const IndexPage = () => {
-  //Loading bar simulation, for fixing an awful first print, and because we can.
+
+  //small work around to fix a first print issue;
+  const [isReady, setIsReady] = useState(false)
+
+  setTimeout(() => {
+    setIsReady(true)
+  }, 0)
+
+  //Loading simulation
   const [loading, setLoading] = useState(true)
   setTimeout(() => {
     setLoading(false)
@@ -52,23 +59,25 @@ const IndexPage = () => {
   )
 
   return (
-    <Layout>
-      {loadingTransition.map(
-        ({ item, key, props }) =>
-          item && (
-            <animated.div style={props}>
-              <Loading />
-            </animated.div>
-          )
-      )}
-      <SEO title="Home" />
-      <ToggledContextProvider>
-        <Background>
-          <MainTitle />
-          <BannersContainer />
-        </Background>
-      </ToggledContextProvider>
-    </Layout>
+    isReady && (
+      <Layout>
+        {loadingTransition.map(
+          ({ item, key, props }) =>
+            item && (
+              <animated.div style={props}>
+                <Loading />
+              </animated.div>
+            )
+        )}
+        <SEO title="Home" />
+        <ToggledContextProvider>
+          <Background>
+            <MainTitle />
+            <BannersContainer />
+          </Background>
+        </ToggledContextProvider>
+      </Layout>
+    )
   )
 }
 
