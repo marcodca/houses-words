@@ -7,7 +7,7 @@ const Title = styled(animated.h1)`
   font-family: "games-of-thrones", sans-serif;
   position: absolute;
   left: 11%;
-  top: 1%;
+  top: 5%;
   font-size: 3.2rem;
   line-height: 5rem;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.5),
